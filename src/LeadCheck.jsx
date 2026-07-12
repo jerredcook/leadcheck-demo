@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Search, AlertTriangle, ArrowLeft, ExternalLink, Info } from "lucide-react";
+import categoryStats from "./data/categoryStats.json";
 
 /*
   LeadCheck — consumer prototype for the open lead-in-products database.
@@ -391,6 +392,53 @@ function BasisChip({ basis }) {
   );
 }
 
+// Real per-category counts from the pipeline (lead_products.sqlite), exported
+// by export_app_data.py. Source-separated on purpose: screening, investigation,
+// and recall counts are NEVER pooled into one "prevalence" number.
+function CategoryStats({ stats }) {
+  if (!stats) return null;
+  const { screening: s, investigation: inv, recalls: rec } = stats;
+  return (
+    <div className="mt-6 bg-white border border-slate-200 rounded-md p-4">
+      <h3 className="text-sm font-semibold text-slate-800 uppercase tracking-wide">By the numbers</h3>
+      <p className="text-xs text-slate-500 mt-1">
+        From aggregated public testing. These are{" "}
+        <span className="font-semibold">not</span> figures for how common lead is
+        in what you'd buy — read each line's note.
+      </p>
+      <ul className="mt-3 space-y-3 text-sm text-slate-700">
+        {s && (
+          <li>
+            <span className="font-medium">Market screening (Pure Earth, 25 countries):</span>{" "}
+            lead detected in {s.detected} of {s.samples} samples
+            {typeof s.above_reference === "number"
+              ? `, ${s.above_reference} above the 100 ppm screening reference`
+              : ""}.
+            <span className="block text-xs text-slate-500 mt-0.5">
+              A snapshot of goods on sale across many markets — not a verdict on any brand, and lead is often uneven from batch to batch.
+            </span>
+          </li>
+        )}
+        {inv && (
+          <li>
+            <span className="font-medium">Investigation testing (NYC Health Dept.):</span>{" "}
+            lead found in {inv.detected} of {inv.samples} products tested.
+            <span className="block text-xs text-slate-500 mt-0.5">
+              Collected during lead-poisoning investigations — targeted samples, so a high rate is expected here and is not a market rate.
+            </span>
+          </li>
+        )}
+        {rec && (
+          <li>
+            <span className="font-medium">Recalls (CPSC / FDA):</span>{" "}
+            {rec} product recall{rec === 1 ? "" : "s"} for lead recorded in this category.
+          </li>
+        )}
+      </ul>
+    </div>
+  );
+}
+
 function RecordCard({ r }) {
   return (
     <div className="bg-white border border-slate-200 rounded-md p-4 sm:p-5">
@@ -620,6 +668,8 @@ export default function LeadCheck() {
                 </ul>
               </div>
             </div>
+
+            <CategoryStats stats={categoryStats.categories[cat.id]} />
 
             <h3 className="font-serif text-xl mt-8">What testing has found</h3>
             <div className="mt-3 grid gap-3">

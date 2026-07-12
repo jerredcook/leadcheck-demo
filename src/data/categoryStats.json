@@ -1,0 +1,104 @@
+{
+  "note": "Counts from aggregated public testing. These are NOT market-prevalence figures: screening samples are not a random market survey, and investigation samples are targeted, not random.",
+  "categories": {
+    "spices": {
+      "screening": {
+        "samples": 1084,
+        "detected": 31,
+        "above_reference": 23
+      },
+      "investigation": {
+        "samples": 3580,
+        "detected": 1559
+      },
+      "recalls": 69
+    },
+    "food": {
+      "screening": {
+        "samples": 566,
+        "detected": 14,
+        "above_reference": 8
+      },
+      "investigation": {
+        "samples": 1109,
+        "detected": 216
+      },
+      "recalls": 41
+    },
+    "cookware": {
+      "screening": {
+        "samples": 520,
+        "detected": 373,
+        "above_reference": 267
+      },
+      "investigation": {
+        "samples": 714,
+        "detected": 568
+      },
+      "recalls": 41
+    },
+    "ceramics": {
+      "screening": {
+        "samples": 308,
+        "detected": 266,
+        "above_reference": 139
+      },
+      "recalls": 19
+    },
+    "toys": {
+      "screening": {
+        "samples": 781,
+        "detected": 232,
+        "above_reference": 102
+      },
+      "investigation": {
+        "samples": 618,
+        "detected": 292
+      },
+      "recalls": 157
+    },
+    "jewelry": {
+      "investigation": {
+        "samples": 63,
+        "detected": 51
+      },
+      "recalls": 77
+    },
+    "cosmetics": {
+      "screening": {
+        "samples": 812,
+        "detected": 106,
+        "above_reference": 97
+      },
+      "investigation": {
+        "samples": 591,
+        "detected": 372
+      },
+      "recalls": 12
+    },
+    "remedies": {
+      "screening": {
+        "samples": 54,
+        "detected": 2,
+        "above_reference": 2
+      },
+      "investigation": {
+        "samples": 896,
+        "detected": 378
+      },
+      "recalls": 15
+    },
+    "paint": {
+      "screening": {
+        "samples": 639,
+        "detected": 300,
+        "above_reference": 233
+      },
+      "investigation": {
+        "samples": 33,
+        "detected": 17
+      },
+      "recalls": 10
+    }
+  }
+}
