@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Search, AlertTriangle, ArrowLeft, ExternalLink, Info } from "lucide-react";
 import categoryStats from "./data/categoryStats.json";
+import searchAliases from "./data/searchAliases.json";
 
 /*
   LeadCheck — consumer prototype for the open lead-in-products database.
@@ -516,14 +517,14 @@ export default function LeadCheck() {
   const q = query.trim().toLowerCase();
 
   const results = useMemo(() => {
-    if (!q) return { records: [], categories: [] };
+    if (!q) return { records: [], categories: [], aliasNotes: [] };
     // Whole-token / prefix matching, never bidirectional substring: "haldi"
     // matches the alias "haldi", but "potato" must not match "pot" and a
     // 1–2 char query must not match everything.
-    const tokens = q.split(/\s+/).filter((t) => t.length >= 3);
-    if (tokens.length === 0) return { records: [], categories: [] };
+    const tokens = q.split(/[\s,/&()-]+/).filter((t) => t.length >= 3);
+    if (tokens.length === 0) return { records: [], categories: [], aliasNotes: [] };
     const termMatches = (text) => {
-      const words = String(text).toLowerCase().split(/[\s,/&()]+/).filter(Boolean);
+      const words = String(text).toLowerCase().split(/[\s,/&()-]+/).filter(Boolean);
       return tokens.some((tok) =>
         words.some((w) =>
           w === tok ||
@@ -536,7 +537,15 @@ export default function LeadCheck() {
       termMatches(c.name) || termMatches(c.examples) ||
       c.aliases.some(termMatches);
 
-    const categories = CATEGORIES.filter(catMatches);
+    // Curated multilingual aliases from the data layer (searchAliases.json):
+    // "rueda"→remedies, "halad"→spices, "degchi"→cookware — terms the app's own
+    // hardcoded lists may miss. This makes the data layer drive search.
+    const aliasHits = searchAliases.filter((a) => termMatches(a.alias));
+    const aliasCatIds = new Set(aliasHits.map((a) => a.category));
+
+    const categories = CATEGORIES.filter(
+      (c) => catMatches(c) || aliasCatIds.has(c.id)
+    );
     const catIds = new Set(categories.map((c) => c.id));
     // Records that match directly, PLUS the records of any matched category —
     // so an alias search ("haldi", "barro") shows findings, not an empty grid.
@@ -544,7 +553,14 @@ export default function LeadCheck() {
       termMatches(r.title) || termMatches(r.note) || termMatches(r.source) ||
       termMatches(r.place || "") || catIds.has(r.cat)
     );
-    return { records, categories };
+    const seen = new Set();
+    const aliasNotes = aliasHits.filter((a) => {
+      const k = `${a.alias}|${a.canonical}`;
+      if (seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    });
+    return { records, categories, aliasNotes };
   }, [q]);
 
   const goSearch = () => { if (q) setView({ type: "search" }); };
@@ -692,6 +708,18 @@ export default function LeadCheck() {
               <ArrowLeft size={14} /> Start over
             </button>
             <h2 className="font-serif text-2xl mt-2">Results for “{query}”</h2>
+
+            {results.aliasNotes.length > 0 && (
+              <div className="mt-3 text-sm text-slate-600">
+                {results.aliasNotes.map((a) => (
+                  <span key={`${a.alias}|${a.canonical}`} className="mr-3">
+                    <span className="font-medium text-slate-800">{a.alias}</span>
+                    {a.canonical && a.canonical !== a.alias ? ` — ${a.canonical}` : ""}
+                    {a.language ? <span className="text-slate-400"> ({a.language})</span> : ""}
+                  </span>
+                ))}
+              </div>
+            )}
 
             {results.categories.length > 0 && (
               <div className="mt-4 flex flex-wrap gap-2">

@@ -1,0 +1,182 @@
+[
+  {
+    "alias": "haldi",
+    "category": "spices",
+    "canonical": "turmeric",
+    "language": "Hindi"
+  },
+  {
+    "alias": "holud",
+    "category": "spices",
+    "canonical": "turmeric",
+    "language": "Bengali"
+  },
+  {
+    "alias": "halad",
+    "category": "spices",
+    "canonical": "turmeric",
+    "language": "Marathi"
+  },
+  {
+    "alias": "masala",
+    "category": "spices",
+    "canonical": "spice mix",
+    "language": "Hindi/Urdu"
+  },
+  {
+    "alias": "mirchi",
+    "category": "spices",
+    "canonical": "chili powder",
+    "language": "Hindi"
+  },
+  {
+    "alias": "kajal",
+    "category": "cosmetics",
+    "canonical": "kohl",
+    "language": "Hindi"
+  },
+  {
+    "alias": "kohl",
+    "category": "cosmetics",
+    "canonical": "kohl",
+    "language": "Arabic"
+  },
+  {
+    "alias": "surma",
+    "category": "cosmetics",
+    "canonical": "kohl",
+    "language": "Urdu"
+  },
+  {
+    "alias": "tiro",
+    "category": "cosmetics",
+    "canonical": "kohl",
+    "language": "Yoruba"
+  },
+  {
+    "alias": "kwalli",
+    "category": "cosmetics",
+    "canonical": "kohl",
+    "language": "Hausa"
+  },
+  {
+    "alias": "sindoor",
+    "category": "cosmetics",
+    "canonical": "vermilion",
+    "language": "Hindi"
+  },
+  {
+    "alias": "sindur",
+    "category": "cosmetics",
+    "canonical": "vermilion",
+    "language": "Bengali"
+  },
+  {
+    "alias": "kumkum",
+    "category": "cosmetics",
+    "canonical": "kumkum",
+    "language": "Hindi/Tamil"
+  },
+  {
+    "alias": "vermilion",
+    "category": "cosmetics",
+    "canonical": "vermilion",
+    "language": "English"
+  },
+  {
+    "alias": "azarcon",
+    "category": "remedies",
+    "canonical": "azarcon",
+    "language": "Spanish"
+  },
+  {
+    "alias": "greta",
+    "category": "remedies",
+    "canonical": "greta",
+    "language": "Spanish"
+  },
+  {
+    "alias": "rueda",
+    "category": "remedies",
+    "canonical": "azarcon",
+    "language": "Spanish"
+  },
+  {
+    "alias": "alarcon",
+    "category": "remedies",
+    "canonical": "azarcon",
+    "language": "Spanish"
+  },
+  {
+    "alias": "pay-loo-ah",
+    "category": "remedies",
+    "canonical": "pay-loo-ah",
+    "language": "Hmong"
+  },
+  {
+    "alias": "ghasard",
+    "category": "remedies",
+    "canonical": "ghasard",
+    "language": "Ayurvedic"
+  },
+  {
+    "alias": "bala goli",
+    "category": "remedies",
+    "canonical": "bala goli",
+    "language": "Ayurvedic"
+  },
+  {
+    "alias": "kandu",
+    "category": "remedies",
+    "canonical": "kandu",
+    "language": "Ayurvedic/Tamil"
+  },
+  {
+    "alias": "rasa shastra",
+    "category": "remedies",
+    "canonical": "metal-ash medicine",
+    "language": "Ayurvedic"
+  },
+  {
+    "alias": "barro",
+    "category": "ceramics",
+    "canonical": "clay pot",
+    "language": "Spanish"
+  },
+  {
+    "alias": "terracotta",
+    "category": "ceramics",
+    "canonical": "earthenware",
+    "language": "English"
+  },
+  {
+    "alias": "degchi",
+    "category": "cookware",
+    "canonical": "cooking pot",
+    "language": "Hindi/Urdu"
+  },
+  {
+    "alias": "handi",
+    "category": "cookware",
+    "canonical": "cooking pot",
+    "language": "Hindi/Urdu"
+  },
+  {
+    "alias": "taviz",
+    "category": "jewelry",
+    "canonical": "amulet",
+    "language": "Urdu"
+  },
+  {
+    "alias": "dulces",
+    "category": "food",
+    "canonical": "candy",
+    "language": "Spanish"
+  },
+  {
+    "alias": "tamarindo",
+    "category": "food",
+    "canonical": "tamarind candy",
+    "language": "Spanish"
+  }
+]
