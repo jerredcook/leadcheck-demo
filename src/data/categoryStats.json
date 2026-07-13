@@ -101,14 +101,9 @@
       "recalls": 10
     },
     "babyfood": {
-      "screening": {
-        "samples": 3,
-        "detected": 0,
-        "above_reference": 0
-      },
       "investigation": {
-        "samples": 67,
-        "detected": 7
+        "samples": 53,
+        "detected": 1
       },
       "recalls": 3
     }
